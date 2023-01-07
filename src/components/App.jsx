@@ -1,34 +1,57 @@
-import { ContactForm } from './ContactForm/ContactForm';
-import ContactFilter from './ContactFilter/ContactFilter';
-import ContactList from './ContactList/ContactList';
+import { Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from '../redux/operations';
-import { selectError, selectIsLoading, selectContacts } from 'redux/selectors';
+import { useDispatch } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { AppBar } from './AppBar/AppBar';
+import RegisterView from '../view/RegisterView/RegisterView';
+import LoginView from '../view/LoginViev/LoginView';
+import { ContactsView } from '../view/ContactsView/ContactsView';
+import authOperations from '../redux/Auth/authOperations';
+import { PrivateRoute } from '../components/PrivateRoute';
+import { RestrictedRoute } from '../components/RestrictedRoute';
+import NotFound from '../components/NotFound/NotFound'
 
 export function App() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
-
-  const allContactsSumm = useSelector(selectContacts).length;
 
   return (
     <>
-      <div>
-        <h1>Phonebook</h1>
-        <ContactForm />
-      </div>
-      <div>
-        <h2>Contacts ({allContactsSumm})</h2>
-        <ContactFilter />
-        {isLoading && !error && <b>Request in progress...</b>}
-        <ContactList />
-      </div>
+      <Routes>
+        <Route path="/" element={<AppBar />}>
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute>
+                <RegisterView />
+              </RestrictedRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute>
+                <LoginView />
+              </RestrictedRoute>
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute>
+                <ContactsView />
+              </PrivateRoute>
+            }
+          />
+        </Route>
+        <Route path="*" element={<NotFound />}></Route>
+      </Routes>
+      <ToastContainer />
     </>
   );
 }

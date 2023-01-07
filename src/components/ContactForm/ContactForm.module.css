@@ -1,11 +1,18 @@
 .form {
     display: flex;
     flex-direction: column;
+  
 
 }
 
+.label {
+    display: flex;
+    justify-content: space-between;
+
+}
 .input {
     margin-bottom: 10px;
+    margin-left: 10px;
 }
 .button {
     margin-top: 10px;

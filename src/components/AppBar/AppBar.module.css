@@ -1,0 +1,14 @@
+.phonebook_icon {
+  fill: black;
+}
+
+
+
+.header__logo {
+  display: flex;
+  align-items: center;
+}
+
+.header__icon {
+  margin-right: 20px;
+}
