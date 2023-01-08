@@ -1,7 +1,7 @@
 import css from './AppBar.module.css';
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-// import  Navigation from 'components/Navigation/Navigation'
+
 import UserMenu from '../UserMenu/UserMenu';
 import AuthNav from 'components/AuthNav/AuthNav';
 import authSelectors from '../../redux/Auth/authSelectors';
@@ -31,6 +31,8 @@ export const AppBar = () => {
 
         {isLoggedIn ? <UserMenu /> : <AuthNav />}
       </header>
+      {!isLoggedIn && <h2>Please login or register</h2>}
+
       <Outlet />
     </>
   );
