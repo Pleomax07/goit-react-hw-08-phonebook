@@ -1,3 +1,35 @@
 .contactList {
   padding: 0;
 }
+.transactionHistory {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  max-width: 800px;
+  min-width: 600px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+thead {
+  background-color: #00bcd5;
+  color: white;
+  text-transform: uppercase;
+}
+
+table th,
+table td {
+  padding: 10px;
+  border: 1px solid #d2e7f1;
+  border-radius: 3px;
+}
+td {
+  color: #808283;
+}
+tbody {
+  background-color: white;
+}
+tbody:nth-child(2n+1) {
+  background-color: #ecf1f4;
+}

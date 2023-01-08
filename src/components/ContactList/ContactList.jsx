@@ -10,11 +10,27 @@ const ContactList = () => {
     contact.name.toLowerCase().includes(filter)
   );
   return (
-    <ul className={css.contactList}>
-      {visibleContacts.map(({ name, number, id }) => (
-        <ContactListItem key={name} name={name} number={number} id={id} />
-      ))}
-    </ul>
+    <table className={css.transactionHistory}>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Number</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    {visibleContacts.map(({ name, number, id }) => (
+      <tbody key={id}>
+       <ContactListItem key={name} name={name} number={number} id={id} />
+      </tbody>
+    ))}
+    </table>
   );
 };
 export default ContactList;
+
+
+//   <ul className={css.contactList}>
+//   {visibleContacts.map(({ name, number, id }) => (
+//     <ContactListItem key={name} name={name} number={number} id={id} />
+//   ))}
+// </ul>

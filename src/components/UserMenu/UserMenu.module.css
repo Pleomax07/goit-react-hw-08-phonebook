@@ -1,0 +1,8 @@
+.logOut__icon {
+    cursor: pointer;
+}
+
+.logOut__icon:hover,
+.logOut__icon:focus {
+   scale: 1.1;
+}

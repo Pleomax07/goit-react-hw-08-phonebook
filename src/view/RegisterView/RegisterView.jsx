@@ -1,17 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperations from '../../redux/Auth/authOperations';
-
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
+import css from './RegisterView.module.css';
 
 export default function RegisterView() {
   const dispatch = useDispatch();
@@ -41,26 +31,26 @@ export default function RegisterView() {
   };
 
   return (
-    <div>
+    <div className={css.loginContainer}>
       <h1>Registration Page</h1>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Имя
+      <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
+        <p>Name</p>
+        <label className={css.label}>
           <input
+            className={css.input}
             type="text"
             name="name"
-           
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             value={name}
             onChange={handleChange}
           />
         </label>
-
-        <label style={styles.label}>
-          Email
+        <p>Email</p>
+        <label className={css.label}>
           <input
+            className={css.input}
             type="email"
             name="email"
             pattern="^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$"
@@ -68,10 +58,10 @@ export default function RegisterView() {
             onChange={handleChange}
           />
         </label>
-        
-        <label style={styles.label}>
-          Password
+        <p> Password</p>
+        <label className={css.label}>
           <input
+            className={css.input}
             type="password"
             name="password"
             pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
@@ -81,7 +71,9 @@ export default function RegisterView() {
           />
         </label>
 
-        <button type="submit">Register</button>
+        <button className={css.button} type="submit">
+          Register
+        </button>
       </form>
     </div>
   );

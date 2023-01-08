@@ -26,7 +26,7 @@ export const AppBar = () => {
       <header style={styles.header}>
         <div className={css.header__logo}>
           <img className={css.header__icon} src={logo} alt="logo" />
-          <h1>Phonebook</h1>
+          <h1 className={css.title}>Phonebook</h1>
         </div>
 
         {isLoggedIn ? <UserMenu /> : <AuthNav />}
